@@ -105,6 +105,7 @@ body {
 
 /* Hero Section Styling */
 .hero {
+    /* hero */
     background-image: url('/static/images/bg.jpg');
     background-size: cover;
     background-position: center;
