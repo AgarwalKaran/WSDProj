@@ -34,6 +34,14 @@
             display: block; /* Show error message */
         }
 
+        body{
+            flex-direction: column;
+        }
+        #logBtn {
+            width: 400px;
+            margin: 30px;
+        }
+
     </style>
 </head>
 
@@ -96,6 +104,9 @@
         </form>
     </div>
 
+    <button id='logBtn'
+        class="w-full bg-indigo-600 text-white font-medium py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+        id="submitBtn">Login</button>
     <script>
         // instantiating all ids and variables
         const form = document.getElementById('registrationForm');
@@ -302,7 +313,10 @@
             .catch(error => console.error('Error:', error));
         });
 
-        
+        const logBtn = document.getElementById("logBtn");
+logBtn.addEventListener("click", () => {
+    window.location.href = '/login'; // This will run when the button is clicked
+});
 
     </script>
 
