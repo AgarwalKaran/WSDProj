@@ -4,6 +4,8 @@ const path = require("path");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
+const MongoStore = require('connect-mongo');
+
 
 
 app.set("view engine", "ejs");
@@ -11,9 +13,10 @@ app.set("view engine", "ejs");
 app.use("/static", express.static(path.join(__dirname, "src")));
 app.use(express.urlencoded());
 app.use(express.json()); //Parsing Json
+app.use(cookieParser());
 
 //Using cookieParser:
-app.use(cookieParser());
+/*
 app.use(session({
     resave: false,
     saveUninitialized: true,
@@ -26,6 +29,31 @@ app.use(session({
     //Note: If the maxage of cookie is not set. The session will remain active only until the browser is not closed. If maxage is given, the duration of the cookie and session to be existing can be set beyond that.
     //Here, the session will expire after 30 seconds of logging in, irrespective of wheter the user closes or keeps the browser open.
 }));
+*/
+
+//connect-mongo
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URL, // Make sure this is correct
+        collectionName: 'sessions', // Optional: name the collection for sessions
+        ttl: 14 * 24 * 60 * 60 // 14 days
+    }),
+    cookie: {
+        maxAge: 1000 * 60 * 10, // 10 minutes
+        secure: process.env.NODE_ENV === 'production', // Ensure cookies are secure in production
+        httpOnly: true,
+        sameSite: 'lax'
+    }
+}));
+
+app.use((req, res, next) => {
+    console.log('Session:', req.session);
+    next();
+});
+
 
 
 //MongoDB:
