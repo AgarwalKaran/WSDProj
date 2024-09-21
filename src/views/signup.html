@@ -1,54 +1,10 @@
-<!-- 
- Intent behind using this design:
-  Design Philosophy and User Experience:
-  - Simplicity and Professional Appearance: Clean, modern look achieved with Tailwind CSS for easy navigation.
-  - Responsiveness: Tailwind ensures form adapts to various screen sizes, providing consistent user experience.
-  - User Feedback: Real-time feedback with green checkmarks for valid inputs and red "x" for invalid inputs. 
-
-  Form Structure and Layout:
-  - Centered Layout: Draws focus and makes the form approachable with padding, rounded corners, and shadows.
-  - Field Grouping: Organized, easy-to-read layout with clear labels and evenly spaced input fields.
-
-  Implementation of Input Validation:
-  - JavaScript Validation: Real-time feedback as the user types, preventing form submission errors.
-  - Error Messaging: Red error messages appear below fields when validation fails, providing clear guidance.
-
-  Validation Logic and Criteria:
-  - Name Validation: Accepts alphabetic characters and spaces, minimum 3 characters.
-    * Rationale: Prevents common input errors for names.
-  - Email Validation: Ensures proper email format (e.g., user@example.com).
-    * Rationale: Prevents submission of invalid email addresses.
-  - Password Validation: At least 8 characters, containing both letters and numbers.
-    * Rationale: Ensures basic password security requirements.
-  - Confirm Password Validation: Matches password field to confirm user input accuracy.
-  - DOB Validation: Ensures users are at least 18 years old with date format "YYYY-MM-DD".
-    * Rationale: Complies with common age restrictions for user registrations.
-
-  Real-time Feedback and Visual Indicators:
-  - Dynamic Icons: ✔ for valid and ✘ for invalid states, providing intuitive feedback.
-  - Border Color Changes: Green borders for valid and red for invalid inputs to enhance accessibility.
-
-  Use of Tailwind CSS:
-  - Utility Classes: Simplifies styling and makes it easy to maintain the form’s design.
-  - Responsive Design: Ensures the form looks good on all devices.
-  - Consistent Design Language: Maintains a cohesive look and feel across form elements.
-
-  Accessibility Considerations:
-  - Labels and Error Messaging: Improves accessibility, ensuring screen readers identify fields correctly.
-  - Color Contrast: High contrast used for error messages/icons for readability by users with visual impairments.
-
-  Form Submission Handling:
-  - Prevent Default Behavior: Ensures no data is submitted until all fields pass validation.
-  - Disabled Submit Button: Only enabled when all validation criteria are met to prevent incomplete submissions.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>Registration Form</title>
     <!-- Including Tailwind Css here -->
     <script src="https://cdn.tailwindcss.com"></script>
