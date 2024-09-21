@@ -26,6 +26,14 @@
             color: red;
             display: block;
         }
+        .error-message {
+            display: none; /* Hidden by default */
+        }
+
+        .error-message.show {
+            display: block; /* Show error message */
+        }
+
     </style>
 </head>
 
@@ -115,6 +123,7 @@
 
         //Name Validation
         function validateName() {
+            console.log("Name is run");
             const namePattern = /^[A-Za-z\s]{3,}$/;
             if (namePattern.test(nameInput.value)) {
                 nameInput.classList.add('border-green-500');
@@ -123,7 +132,10 @@
                 nameIcon.classList.add('valid');
                 nameIcon.classList.remove('invalid');
                 nameIcon.textContent = '✔';
-            } else {
+            } 
+
+               
+            else {
                 nameInput.classList.remove('border-green-500');
                 nameInput.classList.add('border-red-500');
                 nameError.style.display = 'block';
@@ -155,7 +167,8 @@
 
         //Password Validation
         function validatePassword() {
-            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
             if (passwordPattern.test(passwordInput.value)) {
                 passwordInput.classList.add('border-green-500');
                 passwordInput.classList.remove('border-red-500');
@@ -289,6 +302,7 @@
             .catch(error => console.error('Error:', error));
         });
 
+        
 
     </script>
 

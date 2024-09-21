@@ -35,6 +35,13 @@
             width: 400px;
             margin: 30px;
         }
+        .error-message {
+            display: none; /* Hidden by default */
+        }
+
+        .error-message.show {
+            display: block; /* Show error message */
+        }
     </style>
 </head>
 
@@ -111,7 +118,9 @@
 
         //Password Validation
         function validatePassword() {
-            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+
             if (passwordPattern.test(passwordInput.value)) {
                 passwordInput.classList.add('border-green-500');
                 passwordInput.classList.remove('border-red-500');
