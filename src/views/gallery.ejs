@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Automobile Gallery - Explore our curated collection of stunning cars.">
+    <meta name="keywords" content="Automobile, Gallery, Cars, Collection">
+    <meta name="author" content="Your Name">
+    <title>Automobile Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Custom Styles */
+        .navbar {
+            background: #333;
+        }
+
+        .navbar .logo {
+            color: #ff6600;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ff6600 !important;
+        }
+
+        .gallery {
+            padding: 60px 0;
+            background: #f8f9fa;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            animation: slideIn 1s ease-out;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text h3 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .gallery-text p {
+            font-size: 16px;
+            margin: 10px 0 0;
+        }
+
+        .gallery-card {
+            margin-bottom: 30px;
+        }
+
+        .gallery-card .card-body {
+            padding: 20px;
+        }
+
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ff6600;
+        }
+        /* Burger Menu Styles */
+        .burger-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .navbar .burger-menu {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+        }
+
+        .cars-section {
+            margin-top: 30px;
+            /* width: 100%; */
+            padding: 40px;
+            
+        }
+        .cars-section h2{
+            text-align: center;
+        }
+        #cars-list{
+            display: flex;
+            justify-content: center;
+        }
+
+        .car-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px 10px;
+            height: 200px;
+            width: 200px;
+        }
+
+        .car-item h4 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .car-item p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <%- include('navbar'); %> 
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2>Our Gallery</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-card card">
+                        <div class="gallery-item">
+                            <img src="/static/images/img1.avif" alt="Car 1" class="card-img-top">
+                            <div class="gallery-overlay">
+                                <div class="gallery-text">
+                                    <h3>Classic Muscle</h3>
+                                    <p>Unleash the power and elegance of classic muscle cars.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Muscle</h5>
+                            <p class="card-text">Classic muscle cars are known for their powerful engines and timeless design. They represent a golden era of automotive history, combining performance with style.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-card card">
+                        <div class="gallery-item">
+                            <img src="/static/images/img2.jpg" alt="Car 2" class="card-img-top">
+                            <div class="gallery-overlay">
+                                <div class="gallery-text">
+                                    <h3>Luxury Sedan</h3>
+                                    <p>Experience unparalleled luxury and comfort.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Sedan</h5>
+                            <p class="card-text">Luxury sedans offer a refined driving experience with high-end features and exceptional comfort. They are designed for those who appreciate sophistication and elegance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-card card">
+                        <div class="gallery-item">
+                            <img src="/static/images/img3.jpg" alt="Car 3" class="card-img-top">
+                            <div class="gallery-overlay">
+                                <div class="gallery-text">
+                                    <h3>Sporty Coupe</h3>
+                                    <p>Feel the thrill of the road with our sporty coupes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sporty Coupe</h5>
+                            <p class="card-text">Sporty coupes are designed for performance enthusiasts who crave agility and speed. Their sleek design and powerful engines deliver an exhilarating driving experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more gallery items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Cars Section -->
+    <section class="cars-section">
+        
+            <h2>Our Cars</h2>
+            <div id="cars-list" class="row">
+                <!-- Car items will be added here dynamically -->
+            </div>
+        
+    </section>
+
+    <!-- Footer -->
+    <%- include('footer'); %> 
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.querySelector('.burger-menu').addEventListener('click', () => {
+            document.querySelector('.navbar-nav').classList.toggle('active');
+        });
+
+         // Fetch and display car data
+         fetch('/static/views/cars.xml')
+            .then(response => response.text())
+            .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+            .then(data => {
+                const carsList = data.querySelectorAll('car');
+                const carsContainer = document.getElementById('cars-list');
+                carsList.forEach(car => {
+                    const model = car.querySelector('model').textContent;
+                    const manufacturer = car.querySelector('manufacturer').textContent;
+                    const year = car.querySelector('year').textContent;
+                    const type = car.querySelector('type').textContent;
+                    const price = car.querySelector('price').textContent;
+                    const currency = car.querySelector('price').getAttribute('currency');
+
+                    const carItem = document.createElement('div');
+                    carItem.className = 'col-md-4 car-item';
+                    carItem.innerHTML = `
+                        <h4>${model}</h4>
+                        <p><strong>Manufacturer:</strong> ${manufacturer}</p>
+                        <p><strong>Year:</strong> ${year}</p>
+                        <p><strong>Type:</strong> ${type}</p>
+                        <p><strong>Price:</strong> ${currency} ${price}</p>
+                    `;
+                    carsContainer.appendChild(carItem);
+                });
+            })
+            .catch(error => console.error('Error fetching car data:', error));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cars>
+    <car id="1">
+        <model>Mustang</model>
+        <manufacturer>Ford</manufacturer>
+        <year>1967</year>
+        <type>Coupe</type>
+        <price currency="USD">30000</price>
+        <engine>V8</engine>
+        <topSpeed>150 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="2">
+        <model>Camaro</model>
+        <manufacturer>Chevrolet</manufacturer>
+        <year>1969</year>
+        <type>Coupe</type>
+        <price currency="USD">35000</price>
+        <engine>V8</engine>
+        <topSpeed>140 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="3">
+        <model>911 Carrera</model>
+        <manufacturer>Porsche</manufacturer>
+        <year>2022</year>
+        <type>Coupe</type>
+        <price currency="USD">100000</price>
+        <engine>Flat-6</engine>
+        <topSpeed>190 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="4">
+        <model>Model S</model>
+        <manufacturer>Tesla</manufacturer>
+        <year>2023</year>
+        <type>Sedan</type>
+        <price currency="USD">85000</price>
+        <engine>Electric</engine>
+        <topSpeed>155 mph</topSpeed>
+        <fuel>Electric</fuel>
+    </car>
+    <car id="5">
+        <model>Civic</model>
+        <manufacturer>Honda</manufacturer>
+        <year>2021</year>
+        <type>Sedan</type>
+        <price currency="USD">22000</price>
+        <engine>Inline-4</engine>
+        <topSpeed>125 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="6">
+        <model>Challenger</model>
+        <manufacturer>Dodge</manufacturer>
+        <year>2020</year>
+        <type>Coupe</type>
+        <price currency="USD">32000</price>
+        <engine>V8</engine>
+        <topSpeed>160 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="7">
+        <model>Corvette</model>
+        <manufacturer>Chevrolet</manufacturer>
+        <year>2021</year>
+        <type>Coupe</type>
+        <price currency="USD">60000</price>
+        <engine>V8</engine>
+        <topSpeed>194 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="8">
+        <model>Supra</model>
+        <manufacturer>Toyota</manufacturer>
+        <year>2020</year>
+        <type>Coupe</type>
+        <price currency="USD">50000</price>
+        <engine>Inline-6</engine>
+        <topSpeed>155 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="9">
+        <model>GT-R</model>
+        <manufacturer>Nissan</manufacturer>
+        <year>2019</year>
+        <type>Coupe</type>
+        <price currency="USD">110000</price>
+        <engine>V6 Twin-Turbo</engine>
+        <topSpeed>196 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="10">
+        <model>Aventador</model>
+        <manufacturer>Lamborghini</manufacturer>
+        <year>2021</year>
+        <type>Coupe</type>
+        <price currency="USD">400000</price>
+        <engine>V12</engine>
+        <topSpeed>217 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="11">
+        <model>Chiron</model>
+        <manufacturer>Bugatti</manufacturer>
+        <year>2020</year>
+        <type>Coupe</type>
+        <price currency="USD">3000000</price>
+        <engine>W16 Quad-Turbo</engine>
+        <topSpeed>261 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="12">
+        <model>Model 3</model>
+        <manufacturer>Tesla</manufacturer>
+        <year>2021</year>
+        <type>Sedan</type>
+        <price currency="USD">40000</price>
+        <engine>Electric</engine>
+        <topSpeed>140 mph</topSpeed>
+        <fuel>Electric</fuel>
+    </car>
+    <car id="13">
+        <model>Panamera</model>
+        <manufacturer>Porsche</manufacturer>
+        <year>2020</year>
+        <type>Sedan</type>
+        <price currency="USD">90000</price>
+        <engine>V6</engine>
+        <topSpeed>164 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="14">
+        <model>Cayenne</model>
+        <manufacturer>Porsche</manufacturer>
+        <year>2021</year>
+        <type>SUV</type>
+        <price currency="USD">70000</price>
+        <engine>V8</engine>
+        <topSpeed>155 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="15">
+        <model>Defender</model>
+        <manufacturer>Land Rover</manufacturer>
+        <year>2022</year>
+        <type>SUV</type>
+        <price currency="USD">60000</price>
+        <engine>V6</engine>
+        <topSpeed>130 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="16">
+        <model>F150</model>
+        <manufacturer>Ford</manufacturer>
+        <year>2021</year>
+        <type>Truck</type>
+        <price currency="USD">40000</price>
+        <engine>V6 EcoBoost</engine>
+        <topSpeed>120 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="17">
+        <model>Ram 1500</model>
+        <manufacturer>Ram</manufacturer>
+        <year>2020</year>
+        <type>Truck</type>
+        <price currency="USD">38000</price>
+        <engine>V8 HEMI</engine>
+        <topSpeed>115 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="18">
+        <model>Range Rover</model>
+        <manufacturer>Land Rover</manufacturer>
+        <year>2021</year>
+        <type>SUV</type>
+        <price currency="USD">100000</price>
+        <engine>V8</engine>
+        <topSpeed>155 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="19">
+        <model>Taycan</model>
+        <manufacturer>Porsche</manufacturer>
+        <year>2022</year>
+        <type>Sedan</type>
+        <price currency="USD">150000</price>
+        <engine>Electric</engine>
+        <topSpeed>162 mph</topSpeed>
+        <fuel>Electric</fuel>
+    </car>
+    <car id="20">
+        <model>Cybertruck</model>
+        <manufacturer>Tesla</manufacturer>
+        <year>2023</year>
+        <type>Truck</type>
+        <price currency="USD">50000</price>
+        <engine>Electric</engine>
+        <topSpeed>130 mph</topSpeed>
+        <fuel>Electric</fuel>
+    </car>
+    <car id="21">
+        <model>Bronco</model>
+        <manufacturer>Ford</manufacturer>
+        <year>2021</year>
+        <type>SUV</type>
+        <price currency="USD">35000</price>
+        <engine>V6</engine>
+        <topSpeed>115 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="22">
+        <model>DB11</model>
+        <manufacturer>Aston Martin</manufacturer>
+        <year>2021</year>
+        <type>Coupe</type>
+        <price currency="USD">200000</price>
+        <engine>V12</engine>
+        <topSpeed>208 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="23">
+        <model>Huracan</model>
+        <manufacturer>Lamborghini</manufacturer>
+        <year>2021</year>
+        <type>Coupe</type>
+        <price currency="USD">250000</price>
+        <engine>V10</engine>
+        <topSpeed>201 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="24">
+        <model>Continental GT</model>
+        <manufacturer>Bentley</manufacturer>
+        <year>2021</year>
+        <type>Coupe</type>
+        <price currency="USD">220000</price>
+        <engine>W12</engine>
+        <topSpeed>207 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+    <car id="25">
+        <model>Escalade</model>
+        <manufacturer>Cadillac</manufacturer>
+        <year>2022</year>
+        <type>SUV</type>
+        <price currency="USD">90000</price>
+        <engine>V8</engine>
+        <topSpeed>130 mph</topSpeed>
+        <fuel>Gasoline</fuel>
+    </car>
+</cars>

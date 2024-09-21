@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Automobile Gallery showcasing the best cars with detailed blogs and a geolocation feature.">
+    <meta name="keywords" content="Automobile, Gallery, Cars, Blog, Geolocation">
+    <meta name="author" content="Your Name">
+    <title>AutoGallery - Home</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Optional: Include a custom font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+  
+</head>
+<body>
+
+    <%- include('navbar'); %> 
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to AutoGallery</h1>
+            <p>Your ultimate destination for car enthusiasts. Explore the best cars and plan your next road trip with us.</p>
+            <a href="/gallery" class="btn">Explore the Gallery</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="about">
+        <h2>About Us</h2>
+        <p>AutoGallery is dedicated to showcasing the finest automobiles from around the world. Whether you're a car enthusiast or just looking for inspiration for your next vehicle, our gallery has something for everyone.</p>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <h2>Featured Cars</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="/static/images/img1.avif" alt="Car 1">
+                <div class="card-content">
+                    <h3>Classic Muscle</h3>
+                    <p>A vintage beast that roars on the road.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/static/images/img2.jpg" alt="Car 2">
+                <div class="card-content">
+                    <h3>Luxury Sedan</h3>
+                    <p>Elegance meets performance in this beauty.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/static/images/img3.jpg" alt="Car 3">
+                <div class="card-content">
+                    <h3>Sporty Coupe</h3>
+                    <p>For those who live life in the fast lane.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <%- include('footer'); %> 
+    <script src="js/script.js"></script>
+    
+</body>
+</html>

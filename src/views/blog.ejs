@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our latest blog posts about automobiles and the automotive industry.">
+    <meta name="keywords" content="Automobile, Blog, Cars, Automotive, Posts">
+    <meta name="author" content="Your Name">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: #333;
+            padding: 10px 20px;
+        }
+
+        .navbar .logo a {
+            color: #ff6600;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+            margin-left: 15px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ff6600 !important;
+        }
+
+        
+        .blog {
+            padding: 60px 0;
+            background: #f0f0f0;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #blog-container{
+            display: flex;
+            flex-direction: row;
+        }
+        .blog h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 36px;
+            animation: slideIn 1s ease-out;
+        }
+
+        .blog-post {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px 10px;
+            /* max-width: 800px; */
+            width: 90%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .blog-post:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-post h3 {
+            color: #ff6600;
+            font-size: 28px;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-post h3:hover {
+            color: #e65c00;
+        }
+
+        .blog-post p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ff6600;
+        }
+
+        /* Burger Menu Styles */
+        .burger-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .navbar .burger-menu {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('navbar'); %> 
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="container">
+            <h2>Our Blog</h2>
+            <div id="blog-container"></div> <!-- This will hold the blog posts -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('footer'); %> 
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.querySelector('.burger-menu').addEventListener('click', () => {
+            document.querySelector('.navbar-nav').classList.toggle('active');
+        });
+
+         
+        function loadBlogPosts() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/static/views/blogposts.xml", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var xmlDoc = xhr.responseXML;
+                    var posts = xmlDoc.getElementsByTagName("post");
+                    var blogContainer = document.getElementById("blog-container");
+
+                    for (var i = 0; i < posts.length; i++) {
+                        var id = posts[i].getAttribute("id");
+                        var title = posts[i].getElementsByTagName("title")[0].textContent;
+                        var author = posts[i].getElementsByTagName("author")[0].textContent;
+                        var date = posts[i].getElementsByTagName("date")[0].textContent;
+                        var content = posts[i].getElementsByTagName("content")[0].textContent;
+
+                        // Create blog post HTML
+                        var postElement = document.createElement("div");
+                        postElement.className = "blog-post";
+                        postElement.onclick = function() { window.open('post' + id + '.html', '_blank'); };
+
+                        var imgElement = document.createElement("img");
+                        imgElement.src = "/static/images/feature" + id + ".jpg";
+                        imgElement.alt = "Feature Image for Post " + id;
+
+                        var titleElement = document.createElement("h3");
+                        titleElement.textContent = title;
+
+                        var contentElement = document.createElement("p");
+                        contentElement.textContent = content;
+
+                        // Append elements to the post container
+                        postElement.appendChild(imgElement);
+                        postElement.appendChild(titleElement);
+                        postElement.appendChild(contentElement);
+
+                        // Append the post to the blog container
+                        blogContainer.appendChild(postElement);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Load blog posts when the page is fully loaded
+        window.onload = loadBlogPosts;
+    </script>
+</body>
+</html>
