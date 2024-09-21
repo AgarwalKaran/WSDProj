@@ -31,7 +31,7 @@ app.use(session({
 }));
 */
 
-//connect-mongo
+//Using connect-mongo:
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
@@ -48,7 +48,6 @@ app.use(session({
         sameSite: 'lax'
     }
 }));
-
 app.use((req, res, next) => {
     console.log('Session:', req.session);
     next();
