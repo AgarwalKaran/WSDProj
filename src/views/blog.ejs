@@ -189,51 +189,55 @@
 
          
         function loadBlogPosts() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "/static/views/blogposts.xml", true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    var xmlDoc = xhr.responseXML;
-                    var posts = xmlDoc.getElementsByTagName("post");
-                    var blogContainer = document.getElementById("blog-container");
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/static/views/blogposts.xml", true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var xmlDoc = xhr.responseXML;
+            var posts = xmlDoc.getElementsByTagName("post");
+            var blogContainer = document.getElementById("blog-container");
 
-                    for (var i = 0; i < posts.length; i++) {
-                        var id = posts[i].getAttribute("id");
-                        var title = posts[i].getElementsByTagName("title")[0].textContent;
-                        var author = posts[i].getElementsByTagName("author")[0].textContent;
-                        var date = posts[i].getElementsByTagName("date")[0].textContent;
-                        var content = posts[i].getElementsByTagName("content")[0].textContent;
+            for (var i = 0; i < posts.length; i++) {
+                (function() {
+                    var id = posts[i].getAttribute("id");
+                    var title = posts[i].getElementsByTagName("title")[0].textContent;
+                    var author = posts[i].getElementsByTagName("author")[0].textContent;
+                    var date = posts[i].getElementsByTagName("date")[0].textContent;
+                    var content = posts[i].getElementsByTagName("content")[0].textContent;
 
-                        // Create blog post HTML
-                        var postElement = document.createElement("div");
-                        postElement.className = "blog-post";
-                        postElement.onclick = function() { window.open('post' + id + '.html', '_blank'); };
+                    // Create blog post HTML
+                    var postElement = document.createElement("div");
+                    postElement.className = "blog-post";
+                    postElement.onclick = function() { 
+                        window.location.href = '/blog' + id;  // Directs to /blog1, /blog2, etc. based on ID
+                    };
 
-                        var imgElement = document.createElement("img");
-                        imgElement.src = "/static/images/feature" + id + ".jpg";
-                        imgElement.alt = "Feature Image for Post " + id;
+                    var imgElement = document.createElement("img");
+                    imgElement.src = "/static/images/feature" + id + ".jpg";
+                    imgElement.alt = "Feature Image for Post " + id;
 
-                        var titleElement = document.createElement("h3");
-                        titleElement.textContent = title;
+                    var titleElement = document.createElement("h3");
+                    titleElement.textContent = title;
 
-                        var contentElement = document.createElement("p");
-                        contentElement.textContent = content;
+                    var contentElement = document.createElement("p");
+                    contentElement.textContent = content;
 
-                        // Append elements to the post container
-                        postElement.appendChild(imgElement);
-                        postElement.appendChild(titleElement);
-                        postElement.appendChild(contentElement);
+                    // Append elements to the post container
+                    postElement.appendChild(imgElement);
+                    postElement.appendChild(titleElement);
+                    postElement.appendChild(contentElement);
 
-                        // Append the post to the blog container
-                        blogContainer.appendChild(postElement);
-                    }
-                }
-            };
-            xhr.send();
+                    // Append the post to the blog container
+                    blogContainer.appendChild(postElement);
+                })();
+            }
         }
+    };
+    xhr.send();
+}
 
-        // Load blog posts when the page is fully loaded
-        window.onload = loadBlogPosts;
+// Load blog posts when the page is fully loaded
+window.onload = loadBlogPosts;
     </script>
 </body>
 </html>

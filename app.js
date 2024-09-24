@@ -143,6 +143,25 @@ app.get("/login", (req, res) => {
     res.sendFile((path.join(__dirname, "src/views", 'login.html')))
 });
 
+app.get("/blog1", (req, res) => {
+    res.status(200).render((path.join(__dirname, "src/views", 'blog1')),{User:req.session.username});
+});
+app.get("/blog2", (req, res) => {
+    res.status(200).render((path.join(__dirname, "src/views", 'blog2')),{User:req.session.username});
+});
+app.get("/blog3", (req, res) => {
+    res.redirect('https://www.team-bhp.com/tech-stuff/how-maintain-your-car-top-shape');
+});
+app.get("/blog4", (req, res) => {
+    res.redirect('https://www.theaa.com/breakdown-cover/advice/evolution-of-car-safety-features');
+});
+
+// Catch-all route for undefined paths (404 handler)
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'src/views', 'undercons.html'));
+});
+
+
 app.post("/signup", async (req, res) => {
 
     console.log(req.body);
