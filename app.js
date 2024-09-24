@@ -5,6 +5,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const MongoStore = require('connect-mongo');
+const bcrypt = require("bcryptjs");
 
 
 
@@ -145,7 +146,11 @@ app.get("/login", (req, res) => {
 app.post("/signup", async (req, res) => {
 
     console.log(req.body);
-    const { name, email, pass, dob } = req.body;
+    let { name, email, pass, dob } = req.body;
+    const salt = await bcrypt.genSalt()
+    console.log(salt,pass);
+    pass = await bcrypt.hash(pass, salt);
+
 
 
     try {
@@ -170,8 +175,9 @@ app.post("/login", async (req, res) => {
     console.log(req.body);
     const { email, pass } = req.body;
 
+
     try {
-        const existingUser = await Users.find({ email: email, pass: pass });
+        const existingUser = await Users.find({ email: email});
         if (existingUser.length === 0) {
             // const entry = new UsersRegistered({ username, name, age, gender, address, more });
             // entry.speak();
@@ -179,12 +185,18 @@ app.post("/login", async (req, res) => {
 
             return res.json({ success: false, message: 'Invalid User' });
         } else {
-            console.log('Login By:',existingUser[0].name);
-            req.session.user = email;
-            req.session.username = existingUser[0].name;
-            req.session.save();
-            
-            res.json({ success: true });
+            const resp = await bcrypt.compare(pass, existingUser[0].pass);
+            if(resp){
+                console.log('Login By:',existingUser[0].name);
+                req.session.user = email;
+                req.session.username = existingUser[0].name;
+                req.session.save();
+                
+                res.json({ success: true });
+            }
+            else{
+                return res.json({ success: false, message: 'Incorrect Password' });
+            }
         }
     } catch (err) {
         console.error(err);

@@ -13,7 +13,7 @@
     <style>
         /* Map Styling */
         #map {
-            height: 80vh;
+            height: 500px;
             width: 100%;
             border-radius: 15px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
@@ -43,53 +43,19 @@
             padding: 10px 20px;
             font-size: 18px;
             color: #fff;
-            background-color: #ff6600;
+            background-color: #706cdb;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s ease-in-out;
+            margin: 5px;
         }
 
         .btn:hover {
-            background-color: #e65c00;
+            background-color: #403d9f;
         }
 
-        /* Navbar Styling */
-        .navbar {
-            background: #333;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #fff;
-        }
-
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff6600;
-            text-decoration: none;
-        }
-
-        .navbar .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .navbar .nav-links li {
-            margin: 0 15px;
-        }
-
-        .navbar .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .navbar .burger-menu {
-            display: none;
-        }
 
         @media (max-width: 768px) {
             .navbar .nav-links {
@@ -107,11 +73,15 @@
                 display: flex;
             }
         }
+
+        .location-buttons {
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
 
-    <!-- Navbar -->
     <!-- Navbar -->
     <%- include('navbar'); %> 
 
@@ -121,6 +91,12 @@
         <p>Click the button below to find your current location and explore it on OpenStreetMap.</p>
         <button class="btn" id="find-location">Find My Location</button>
         <div id="map"></div>
+        <div class="location-buttons">
+            <!-- Update routes to Maruti Suzuki Showrooms -->
+            <a href="https://www.google.com/maps/dir/?api=1&origin=Christ+University,+Central+Campus&destination=Maruti+Suzuki+Showroom,+Malleshwaram" class="btn" target="_blank">Malleshwaram Showroom</a>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=Christ+University,+Central+Campus&destination=Maruti+Suzuki+Showroom,+Indiranagar" class="btn" target="_blank">Indiranagar Showroom</a>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=Christ+University,+Central+Campus&destination=Maruti+Suzuki+Showroom,+JP+Nagar" class="btn" target="_blank">JP Nagar Showroom</a>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -136,9 +112,9 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        document.getElementById('find-location').addEventListener('click', function() {
+        document.getElementById('find-location').addEventListener('click', function () {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude;
 
@@ -149,7 +125,7 @@
                     L.marker([lat, lon]).addTo(map)
                         .bindPopup('You are here')
                         .openPopup();
-                }, function() {
+                }, function () {
                     alert('Geolocation service failed.');
                 });
             } else {
@@ -158,4 +134,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -13,7 +13,229 @@
 
     <!-- Optional: Include a custom font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-  
+
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header.hero {
+            background-color: #333;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        header.hero:hover {
+            background-color: #444;
+        }
+
+        header.hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #FF6F00;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #E65C00;
+            transform: scale(1.05); /* Slightly enlarges button on hover */
+        }
+
+        .about {
+            padding: 50px 20px;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .about:hover {
+            background-color: #fafafa;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .mission-vision {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        .mission-vision div {
+            width: 40%;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-vision div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .mission-vision h3 {
+            color: #FF6F00;
+            margin-bottom: 20px;
+        }
+
+        /* Creator Section Styles */
+        .creators {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .creators h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .creators-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .creator {
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .creator:hover {
+            transform: scale(1.05);
+        }
+
+        .creator img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #FF6F00;
+            object-fit: cover;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .creator img:hover {
+            border-color: #E65C00;
+        }
+
+        .creator p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Video Section */
+        .about-video {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin-top: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .about-video:hover {
+            background-color: #e0e0e0;
+        }
+
+        .about-video h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .about-video video {
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .about-video video:hover {
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .featured h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .card {
+            width: 300px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            color: #FF6F00;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -31,6 +253,43 @@
     <section class="about">
         <h2>About Us</h2>
         <p>AutoGallery is dedicated to showcasing the finest automobiles from around the world. Whether you're a car enthusiast or just looking for inspiration for your next vehicle, our gallery has something for everyone.</p>
+
+        <!-- Mission and Vision Section -->
+        <div class="mission-vision">
+            <div>
+                <h3>Our Mission</h3>
+                <p>To inspire automotive enthusiasts by offering a platform to explore and appreciate the beauty, power, and history of the world's finest cars.</p>
+            </div>
+            <div>
+                <h3>Our Vision</h3>
+                <p>To become the go-to destination for car lovers, offering an immersive experience that bridges the gap between passion and knowledge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creators Section with Circular Images -->
+    <section class="creators">
+        <h3>Meet the Creators</h3>
+        <div class="creators-container">
+            <div class="creator">
+                <img src="/static/images/cars1h.jfif" alt="Creator 1">
+                <p>Lightning McQueen - Karan <br> Backend</p>
+            </div>
+            <div class="creator">
+                <img src="/static/images/cars2h.jfif" alt="Creator 2">
+                <p>Mater - Shivangi <br> Frontend</p>
+            </div>
+            <div class="creator">
+                <img src="/static/images/cars3h.jfif" alt="Creator 3">
+                <p>Sally - Ashvita <br> Designer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="about-video">
+        <h3>Watch Our Journey</h3>
+        <video src="/static/images/tour.mp4" controls></video>
     </section>
 
     <!-- Featured Section -->
@@ -40,30 +299,27 @@
             <div class="card">
                 <img src="/static/images/img1.avif" alt="Car 1">
                 <div class="card-content">
-                    <h3>Classic Muscle</h3>
-                    <p>A vintage beast that roars on the road.</p>
+                    <h3>Ferrari 488</h3>
+                    <p>Power, elegance, and speed all combined in one of Ferrari's finest models.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="/static/images/img2.jpg" alt="Car 2">
                 <div class="card-content">
-                    <h3>Luxury Sedan</h3>
-                    <p>Elegance meets performance in this beauty.</p>
+                    <h3>Lamborghini Aventador</h3>
+                    <p>An iconic model representing the cutting edge of design and performance.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="/static/images/img3.avif" alt="Car 3">
+                <img src="/static/images/img3.jpg" alt="Car 3">
                 <div class="card-content">
-                    <h3>Sporty Coupe</h3>
-                    <p>For those who live life in the fast lane.</p>
+                    <h3>Porsche 911</h3>
+                    <p>Timeless design, thrilling performance, and unmatched precision.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    
     <%- include('footer'); %> 
-    <script src="js/script.js"></script>
-    
 </body>
 </html>
