@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>Registration Form</title>
+    <!-- Including Tailwind Css here -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .icon {
+            position: absolute;
+            right: 10px;
+            top: 12px;
+            font-size: 18px;
+            display: none;
+        }
+
+        .icon.valid {
+            color: green;
+            display: block;
+        }
+
+        .icon.invalid {
+            color: red;
+            display: block;
+        }
+        .error-message {
+            display: none; /* Hidden by default */
+        }
+
+        .error-message.show {
+            display: block; /* Show error message */
+        }
+
+        body{
+            flex-direction: column;
+        }
+        #logBtn {
+            width: 400px;
+            margin: 30px;
+        }
+
+    </style>
+</head>
+
+<!-- all structure elements along with tailwind classes for easier beautification -->
+<!-- adding additional elements to display errors, invalid inputs and tickmarks/crosses -->
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">User Registration Form</h2>
+        <form id="registrationForm" class="space-y-5">
+            <div class="form-group relative">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+                <input type="text" id="name" name="name" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <span class="icon" id="nameIcon">✔</span>
+                <span class="error-message text-red-500 text-xs mt-1" id="nameError">Name must be at least 3 characters
+                    long and contain only letters and spaces.</span>
+            </div>
+
+            <div class="form-group relative">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                <input type="email" id="email" name="email" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <span class="icon" id="emailIcon">✔</span>
+                <span class="error-message text-red-500 text-xs mt-1" id="emailError">Please enter a valid email
+                    address.</span>
+            </div>
+
+            <div class="form-group relative">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+                <input type="password" id="password" name="password" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <span class="icon" id="passwordIcon">✔</span>
+                <span class="error-message text-red-500 text-xs mt-1" id="passwordError">Password must be at least 8
+                    characters long and contain both letters and numbers.</span>
+            </div>
+
+            <div class="form-group relative">
+                <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <span class="icon" id="confirmPasswordIcon">✔</span>
+                <span class="error-message text-red-500 text-xs mt-1" id="confirmPasswordError">Passwords do not
+                    match.</span>
+            </div>
+
+            <div class="form-group relative">
+                <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <span class="icon" id="dobIcon">✔</span>
+                <span class="error-message text-red-500 text-xs mt-1" id="dobError">You must be at least 18 years
+                    old.</span>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-indigo-600 text-white font-medium py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                id="submitBtn" disabled>Register</button>
+        </form>
+    </div>
+
+    <button id='logBtn'
+        class="w-full bg-indigo-600 text-white font-medium py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+        id="submitBtn">Login</button>
+    <script>
+        // instantiating all ids and variables
+        const form = document.getElementById('registrationForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const dobInput = document.getElementById('dob');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+        const dobError = document.getElementById('dobError');
+
+        const nameIcon = document.getElementById('nameIcon');
+        const emailIcon = document.getElementById('emailIcon');
+        const passwordIcon = document.getElementById('passwordIcon');
+        const confirmPasswordIcon = document.getElementById('confirmPasswordIcon');
+        const dobIcon = document.getElementById('dobIcon');
+
+        //All Validation Logic:
+        //If conditions satisfied, adding succcess classes else keeping failed classes by default.
+
+        //Name Validation
+        function validateName() {
+            console.log("Name is run");
+            const namePattern = /^[A-Za-z\s]{3,}$/;
+            if (namePattern.test(nameInput.value)) {
+                nameInput.classList.add('border-green-500');
+                nameInput.classList.remove('border-red-500');
+                nameError.style.display = 'none';
+                nameIcon.classList.add('valid');
+                nameIcon.classList.remove('invalid');
+                nameIcon.textContent = '✔';
+            } 
+
+               
+            else {
+                nameInput.classList.remove('border-green-500');
+                nameInput.classList.add('border-red-500');
+                nameError.style.display = 'block';
+                nameIcon.classList.remove('valid');
+                nameIcon.classList.add('invalid');
+                nameIcon.textContent = '✘';
+            }
+        }
+
+        //Email Validation
+        function validateEmail() {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailPattern.test(emailInput.value)) {
+                emailInput.classList.add('border-green-500');
+                emailInput.classList.remove('border-red-500');
+                emailError.style.display = 'none';
+                emailIcon.classList.add('valid');
+                emailIcon.classList.remove('invalid');
+                emailIcon.textContent = '✔';
+            } else {
+                emailInput.classList.remove('border-green-500');
+                emailInput.classList.add('border-red-500');
+                emailError.style.display = 'block';
+                emailIcon.classList.remove('valid');
+                emailIcon.classList.add('invalid');
+                emailIcon.textContent = '✘';
+            }
+        }
+
+        //Password Validation
+        function validatePassword() {
+            // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+            if (passwordPattern.test(passwordInput.value)) {
+                passwordInput.classList.add('border-green-500');
+                passwordInput.classList.remove('border-red-500');
+                passwordError.style.display = 'none';
+                passwordIcon.classList.add('valid');
+                passwordIcon.classList.remove('invalid');
+                passwordIcon.textContent = '✔';
+            } else {
+                passwordInput.classList.remove('border-green-500');
+                passwordInput.classList.add('border-red-500');
+                passwordError.style.display = 'block';
+                passwordIcon.classList.remove('valid');
+                passwordIcon.classList.add('invalid');
+                passwordIcon.textContent = '✘';
+            }
+            validateConfirmPassword();
+        }
+
+        //Confirm Password Validation
+        function validateConfirmPassword() {
+            if (confirmPasswordInput.value === passwordInput.value && confirmPasswordInput.value !== '') {
+                confirmPasswordInput.classList.add('border-green-500');
+                confirmPasswordInput.classList.remove('border-red-500');
+                confirmPasswordError.style.display = 'none';
+                confirmPasswordIcon.classList.add('valid');
+                confirmPasswordIcon.classList.remove('invalid');
+                confirmPasswordIcon.textContent = '✔';
+            } else {
+                confirmPasswordInput.classList.remove('border-green-500');
+                confirmPasswordInput.classList.add('border-red-500');
+                confirmPasswordError.style.display = 'block';
+                confirmPasswordIcon.classList.remove('valid');
+                confirmPasswordIcon.classList.add('invalid');
+                confirmPasswordIcon.textContent = '✘';
+            }
+        }
+
+        //DOB Validation
+        function validateDOB() {
+            const dobValue = new Date(dobInput.value);
+            const today = new Date();
+            const age = today.getFullYear() - dobValue.getFullYear();
+            const ageCheck = today.setFullYear(today.getFullYear() - 18);
+
+            if (dobInput.value && dobValue <= new Date(ageCheck)) {
+                dobInput.classList.add('border-green-500');
+                dobInput.classList.remove('border-red-500');
+                dobError.style.display = 'none';
+                dobIcon.classList.add('valid');
+                dobIcon.classList.remove('invalid');
+                dobIcon.textContent = '✔';
+            } else {
+                dobInput.classList.remove('border-green-500');
+                dobInput.classList.add('border-red-500');
+                dobError.style.display = 'block';
+                dobIcon.classList.remove('valid');
+                dobIcon.classList.add('invalid');
+                dobIcon.textContent = '✘';
+            }
+        }
+
+        //Total validity (Checking for overall validation, and enabling submit button if yes)
+        function checkFormValidity() {
+            if (
+                nameInput.classList.contains('border-green-500') &&
+                emailInput.classList.contains('border-green-500') &&
+                passwordInput.classList.contains('border-green-500') &&
+                confirmPasswordInput.classList.contains('border-green-500') &&
+                dobInput.classList.contains('border-green-500')
+            ) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+
+        //Adding event listeners to check for user inputs and form changes
+        nameInput.addEventListener('input', () => {
+            validateName();
+            checkFormValidity();
+        });
+
+        emailInput.addEventListener('input', () => {
+            validateEmail();
+            checkFormValidity();
+        });
+
+        passwordInput.addEventListener('input', () => {
+            validatePassword();
+            checkFormValidity();
+        });
+
+        confirmPasswordInput.addEventListener('input', () => {
+            validateConfirmPassword();
+            checkFormValidity();
+        });
+
+        dobInput.addEventListener('input', () => {
+            validateDOB();
+            checkFormValidity();
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // console.log('Submitted');
+            // alert('Form submitted successfully!');
+            const data = {
+                name: nameInput.value,
+                email: emailInput.value,
+                pass: passwordInput.value,
+                dob: dobInput.value
+            };
+            console.log(data);
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Redirect to login page on success
+                    window.location.href = '/login';
+                } else {
+                    alert(result.message || 'Signup failed');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        const logBtn = document.getElementById("logBtn");
+logBtn.addEventListener("click", () => {
+    window.location.href = '/login'; // This will run when the button is clicked
+});
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="description" content="Contact us for more information or inquiries about our Automobile Gallery.">
+    <meta name="keywords" content="Automobile, Contact, Inquiry, Cars, Gallery">
+    <meta name="author" content="Your Name">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Custom Styles */
+        .navbar {
+            background: #333;
+            padding: 10px 20px;
+        }
+
+        .navbar .logo a {
+            color: #ff6600;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+            margin-left: 15px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ff6600 !important;
+        }
+
+        .contact {
+            padding: 60px 0;
+            background: #f0f0f0;
+            animation: fadeIn 1s ease-out;
+     
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 36px;
+            animation: slideIn 1s ease-out;
+     
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-info, .contact-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .contact-info h3, .contact-form h3 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #ff6600;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .contact-info ul li i {
+            color: #ff6600;
+            margin-right: 10px;
+        }
+
+        .contact-form .form-group input, .contact-form .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form .form-group input:focus, .contact-form .form-group textarea:focus {
+            border-color: #ff6600;
+            outline: none;
+        }
+
+        .contact-form .btn {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #e65c00;
+        }
+
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ff6600;
+        }
+
+        /* Burger Menu Styles */
+        .burger-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .navbar .burger-menu {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+        }
+
+        .cars-section {
+            margin-top: 30px;
+        }
+
+        .car-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .car-item h4 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .car-item p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('navbar'); %> 
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>We'd love to hear from you! Whether you have a question about our gallery, need assistance, or just want to talk about cars, feel free to reach out to us.</p>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +123-456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@autogallery.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> SG Palya, Bengaluru, India</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="formMsg">
+                        
+                        <div class="form-group">
+                            <textarea id='msg' name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <%- include('footer'); %> 
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        
+       
+
+let form = document.getElementById('formMsg');
+let name = document.getElementById('msg');
+            form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // console.log('Submitted');
+            // alert('Form submitted successfully!');
+            const data = {
+                msg:msg.value
+            };
+            console.log(data);
+
+            fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Redirect to login page on success
+                    msg.value='';
+                    alert('Feedback Sent');
+                } else {
+                    alert(result.message || 'Server Busy');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

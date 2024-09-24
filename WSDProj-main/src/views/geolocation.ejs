@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="description" content="Geolocation - Find your current location and explore where you want to travel.">
+    <meta name="keywords" content="Geolocation, Map, Travel, OpenStreetMap">
+    <meta name="author" content="Your Name">
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Map Styling */
+        #map {
+            height: 80vh;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .location-info {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .location-info h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .location-info p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #e65c00;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin: 0 15px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .burger-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .navbar .burger-menu {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <%- include('navbar'); %> 
+
+    <!-- Geolocation Section -->
+    <section class="location-info">
+        <h2>Your Location</h2>
+        <p>Click the button below to find your current location and explore it on OpenStreetMap.</p>
+        <button class="btn" id="find-location">Find My Location</button>
+        <div id="map"></div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('footer'); %> 
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([0, 0], 2); // Start with a default view of the world
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        document.getElementById('find-location').addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+
+                    // Center the map on the user's location
+                    map.setView([lat, lon], 13);
+
+                    // Add a marker for the user's location
+                    L.marker([lat, lon]).addTo(map)
+                        .bindPopup('You are here')
+                        .openPopup();
+                }, function() {
+                    alert('Geolocation service failed.');
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        });
+    </script>
+</body>
+</html>
