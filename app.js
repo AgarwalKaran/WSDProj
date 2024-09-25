@@ -156,22 +156,18 @@ app.get("/blog4", (req, res) => {
     res.redirect('https://www.theaa.com/breakdown-cover/advice/evolution-of-car-safety-features');
 });
 
-// Catch-all route for undefined paths (404 handler)
-app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'src/views', 'undercons.html'));
-});
 
 
 app.post("/signup", async (req, res) => {
-
+    
     console.log(req.body);
     let { name, email, pass, dob } = req.body;
     const salt = await bcrypt.genSalt()
     console.log(salt,pass);
     pass = await bcrypt.hash(pass, salt);
-
-
-
+    
+    
+    
     try {
         const existingUser = await Users.find({ email: email });
         if (existingUser.length === 0) {
@@ -180,7 +176,7 @@ app.post("/signup", async (req, res) => {
             await entry.save();
             res.json({ success: true });
             //And redirect to login using javascript
-
+            
         } else {
             return res.json({ success: false, message: 'User already exists' });
         }
@@ -193,15 +189,15 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
     console.log(req.body);
     const { email, pass } = req.body;
-
-
+    
+    
     try {
         const existingUser = await Users.find({ email: email});
         if (existingUser.length === 0) {
             // const entry = new UsersRegistered({ username, name, age, gender, address, more });
             // entry.speak();
             // await entry.save();
-
+            
             return res.json({ success: false, message: 'Invalid User' });
         } else {
             const resp = await bcrypt.compare(pass, existingUser[0].pass);
@@ -228,12 +224,12 @@ app.post("/contact", async (req, res) => {
     const { msg} = req.body;
     const email = req.session.user;
     console.log(email,msg);
-
+    
     try {
         const entry = new Feedbacks({email,msg});
-            // entry.speak();
-            await entry.save();
-            res.json({ success: true });
+        // entry.speak();
+        await entry.save();
+        res.json({ success: true });
     } catch (err) {
         console.error(err);
         res.status(500).json({ success: false, message: 'Server error' });
@@ -244,6 +240,10 @@ app.post("/contact", async (req, res) => {
 app.get("/logout", (req, res) => {
     req.session.destroy();
     res.redirect('/login');
+});
+// Catch-all route for undefined paths (404 handler)
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'src/views', 'undercons.html'));
 });
 
 //SERVER:
